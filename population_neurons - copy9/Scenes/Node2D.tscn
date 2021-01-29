@@ -1,0 +1,74 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Scripts/Line2D_drawing.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Line2D_basis_set.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/Line2D_axes_for_activity_bar.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/Line2D_barGraph.gd" type="Script" id=4]
+[ext_resource path="res://Sprites/mouse_head.png" type="Texture" id=5]
+[ext_resource path="res://Scripts/Line2D_preferred_vecs.gd" type="Script" id=6]
+[ext_resource path="res://Shader/new_shadermaterial.tres" type="Material" id=7]
+[ext_resource path="res://Scripts/Line2D_instruction.gd" type="Script" id=8]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 800.0
+margin_bottom = 600.0
+color = Color( 1, 0.980392, 0.6, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Line2D_axes_for_basis_set" type="Line2D" parent="CanvasLayer"]
+script = ExtResource( 1 )
+
+[node name="Line2D_basis_set" type="Line2D" parent="CanvasLayer"]
+script = ExtResource( 2 )
+
+[node name="Line2D_axes_for_activity_bar" type="Line2D" parent="CanvasLayer"]
+script = ExtResource( 3 )
+
+[node name="Line2D_barGraph" type="Line2D" parent="CanvasLayer"]
+script = ExtResource( 4 )
+
+[node name="Line2D_preferred_vecs" type="Line2D" parent="CanvasLayer"]
+script = ExtResource( 6 )
+
+[node name="Sprite_RotatingMouse" type="Sprite" parent="CanvasLayer"]
+material = ExtResource( 7 )
+scale = Vector2( 0.05, 0.055 )
+texture = ExtResource( 5 )
+
+[node name="Label_title" type="Label" parent="CanvasLayer"]
+margin_right = 40.0
+margin_bottom = 14.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSlider_headAngle" type="HSlider" parent="."]
+margin_right = 16.0
+margin_bottom = 16.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label_headAngle" type="Label" parent="HSlider_headAngle"]
+margin_right = 40.0
+margin_bottom = 14.0
+
+[node name="VSlider_basis_gain" type="VSlider" parent="."]
+margin_left = 1.0
+margin_right = 17.0
+margin_bottom = 16.0
+
+[node name="Label_basisGain" type="Label" parent="VSlider_basis_gain"]
+margin_right = 40.0
+margin_bottom = 14.0
+
+[node name="CanvasLayer_start_instruction" type="CanvasLayer" parent="."]
+
+[node name="Line2D_instruction" type="Line2D" parent="CanvasLayer_start_instruction"]
+script = ExtResource( 8 )
